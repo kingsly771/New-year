@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonne Année, ma princesse 💖</title>
+
+<style>
+body{
+  margin:0;
+  font-family:"Poppins",Arial;
+  background: radial-gradient(#0b0026,#150053,#32008a);
+  color:white;
+  text-align:center;
+  overflow-y:auto;
+  position:relative;
+}
+
+/* 🌟 Stars background */
+#stars{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:radial-gradient(transparent,rgba(0,0,0,.6));
+}
+.star{
+  position:fixed;
+  width:2px;
+  height:2px;
+  background:white;
+  border-radius:50%;
+  opacity:.8;
+  animation:twinkle 2.5s infinite ease-in-out;
+}
+@keyframes twinkle{
+  0%{opacity:.3; transform:scale(.6)}
+  50%{opacity:1; transform:scale(1.4)}
+  100%{opacity:.3; transform:scale(.6)}
+}
+
+/* 🎆 Fireworks */
+#fireworks{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+/* Header */
+.hero{padding:40px 20px;}
+.hero h1{font-size:28px;margin:0;}
+.hero p{opacity:.9}
+
+/* Ribbon */
+.ribbon{
+  margin:15px auto;
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:30px;
+  background:linear-gradient(120deg,#ffd27f,#ffbf3c,#ffda96);
+  color:#442200;
+  box-shadow:0 0 18px rgba(255,210,120,.6);
+  animation:shine 3s infinite alternate;
+}
+@keyframes shine{from{transform:scale(1)}to{transform:scale(1.05)}}
+
+/* Buttons */
+.music-btn{
+  margin-top:6px;
+  border:none;
+  padding:10px 16px;
+  border-radius:30px;
+  background:#ff69b4;
+  color:white;
+  font-weight:600;
+}
+
+/* Timer */
+.timer-box{
+  margin:18px auto;
+  background:rgba(0,0,0,.55);
+  padding:12px 16px;
+  border-radius:14px;
+  max-width:420px;
+  box-shadow:0 0 16px rgba(255,200,255,.35);
+  font-weight:600;
+}
+
+/* Sections */
+.section-title{margin-top:25px;font-size:20px;}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:14px;
+  padding:18px;
+}
+.card{
+  background:rgba(0,0,0,.55);
+  border-radius:16px;
+  padding:14px;
+  border:1px solid rgba(255,200,255,.35);
+  box-shadow:0 0 18px rgba(255,180,255,.3);
+  transition:.35s;
+}
+.card:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 0 26px rgba(255,220,140,.55);
+}
+.card h3{margin:6px 0;}
+.card p{opacity:.8;font-size:14px;}
+.card a{color:#ffd46b;text-decoration:none;font-weight:600}
+
+.love-note{
+  max-width:850px;
+  margin:20px auto 40px;
+  background:rgba(0,0,0,.55);
+  border-radius:16px;
+  padding:18px;
+  line-height:1.7;
+  box-shadow:0 0 18px rgba(255,200,255,.35);
+}
+
+/* 🔐 Secret message */
+.secret-box{
+  max-width:850px;
+  margin:25px auto;
+  background:rgba(0,0,0,.55);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 0 18px rgba(255,200,255,.35);
+}
+.secret-btn{
+  border:none;
+  padding:10px 18px;
+  border-radius:30px;
+  background:#ffd27f;
+  color:#442200;
+  font-weight:700;
+}
+.secret-text{
+  margin-top:15px;
+  display:none;
+  line-height:1.7;
+}
+
+/* 🌹 petals */
+.petal{
+  position:fixed;
+  top:-10px;
+  font-size:16px;
+  pointer-events:none;
+  animation:fall 4.5s linear forwards;
+}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(180deg);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+<canvas id="fireworks"></canvas>
+
+<audio id="music"
+src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_3c40b9.mp3?filename=romantic-piano-10328.mp3"
+loop></audio>
+
+<div class="hero">
+  <h1>🎆 Bonne Année, ma princesse 🎆</h1>
+  <p>Que cette nouvelle année soit remplie d’amour, de douceur et de rêves partagés 💖</p>
+  <button class="music-btn" onclick="toggleMusic()">🎶 Lancer / arrêter la musique</button>
+</div>
+
+<div class="ribbon">
+  ✨ Nouvelle Année — Nouveau Chapitre de Nous ✨
+</div>
+
+<div class="timer-box">
+  ⏳ Nouvelle année commencée depuis : <span id="timer">...</span>
+</div>
+
+<!-- 📚 Webtoons -->
+<h2 class="section-title">📚 Romance Webtoons & Love Stories</h2>
+<div class="grid">
+  <div class="card"><h3>💞 True Beauty</h3><p>Une histoire d’amour tendre et touchante.</p><a target="_blank" href="https://www.webtoons.com/en/romance/truebeauty/list?title_no=1436">Lire →</a></div>
+  <div class="card"><h3>💗 My Dear Cold-Blooded King</h3><p>Un amour intense et passionné.</p><a target="_blank" href="https://www.webtoons.com/en/romance/my-dear-cold-blooded-king/list?title_no=961">Lire →</a></div>
+  <div class="card"><h3>💘 Let’s Play</h3><p>Romance douce et émouvante.</p><a target="_blank" href="https://www.webtoons.com/en/romance/letsplay/list?title_no=1218">Lire →</a></div>
+  <div class="card"><h3>🌙 Age Matters</h3><p>Une histoire sincère et réconfortante.</p><a target="_blank" href="https://www.webtoons.com/en/romance/age-matters/list?title_no=1438">Lire →</a></div>
+</div>
+
+<!-- ✨ Mes voeux -->
+<h2 class="section-title">✨ Mes vœux pour toi cette année</h2>
+<div class="love-note">
+  🌹 Que cette année remplisse ton cœur de lumière,<br>
+  de confiance, d’amour et de douceur 💞
+</div>
+
+<!-- 💝 Souhaits pour nous -->
+<h2 class="section-title">💝 Souhaits que je fais pour nous deux</h2>
+<div class="love-note">
+  💫 Que notre amour grandisse,<br>
+  🌟 que la distance devienne plus légère,<br>
+  💞 et que nos rêves se rejoignent.
+</div>
+
+<!-- 🔐 Secret Message -->
+<h2 class="section-title">🔐 Message secret pour toi</h2>
+<div class="secret-box">
+  <button class="secret-btn" onclick="toggleSecret()">✨ Ouvrir le message</button>
+  <div id="secret" class="secret-text">
+    Ma princesse…<br><br>
+    Peu importe la distance ou le temps,<br>
+    mon cœur restera toujours tourné vers toi 💖<br><br>
+    Toi et moi, ce n’est pas un hasard…<br>
+    c’est une évidence 🌹
+  </div>
+</div>
+
+<!-- 📕 Romantic books -->
+<h2 class="section-title">📕 Romans d’amour & lectures</h2>
+<div class="grid">
+  <div class="card"><h3>💖 Wattpad Romance</h3><p>Histoires modernes & passionnées.</p><a target="_blank" href="https://www.wattpad.com/stories/romance">Lire →</a></div>
+  <div class="card"><h3>📘 Pride & Prejudice</h3><p>Un classique éternel.</p><a target="_blank" href="https://www.gutenberg.org/ebooks/1342">Lire →</a></div>
+  <div class="card"><h3>💌 The Love Hypothesis</h3><p>Douce & drôle.</p><a target="_blank" href="https://www.goodreads.com/book/show/56732449-the-love-hypothesis">Voir →</a></div>
+  <div class="card"><h3>🌺 Short Love Stories</h3><p>Petites histoires tendres.</p><a target="_blank" href="https://americanliterature.com/short-stories-for-children">Lire →</a></div>
+</div>
+
+<div class="love-note">
+  💌 Ma princesse… cette année, je veux écrire encore plus d’instants avec toi 💖
+</div>
+
+<script>
+/* 🎶 Music */
+const music=document.getElementById("music");
+let playing=false;
+function toggleMusic(){playing?music.pause():music.play();playing=!playing}
+
+/* 🌹 Petals */
+setInterval(()=>{
+  const p=document.createElement("div");
+  p.className="petal";p.textContent="🌹";
+  p.style.left=Math.random()*100+"vw";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),4500);
+},900);
+
+/* 🌙 Timer */
+const timer = document.getElementById("timer");
+
+function updateTimer(){
+  const start=new Date("Jan 1, 2025 00:00:00");
+  const diff=Math.floor((Date.now()-start)/1000);
+  const d=Math.floor(diff/86400),h=Math.floor((diff%86400)/3600),
+        m=Math.floor((diff%3600)/60),s=diff%60;
+  timer.textContent=`${d} jours ${h}h ${m}m ${s}s`;
+}
+setInterval(updateTimer,1000);updateTimer();
+
+/* 🔐 Secret message */
+function toggleSecret(){
+  const box=document.getElementById("secret");
+  box.style.display=box.style.display==="block"?"none":"block";
+}
+
+/* 🌟 Stars generator */
+for(let i=0;i<120;i++){
+  const st=document.createElement("div");
+  st.className="star";
+  st.style.left=Math.random()*100+"vw";
+  st.style.top=Math.random()*100+"vh";
+  st.style.animationDelay=Math.random()*2+"s";
+  document.getElementById("stars").appendChild(st);
+}
+
+/* 🎆 Fireworks */
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+resize();onresize=resize;
+let particles=[];
+function firework(){
+  const x=Math.random()*canvas.width,y=Math.random()*canvas.height*.5;
+  for(let i=0;i<40;i++)
+    particles.push({x,y,vx:(Math.random()-0.5)*4,vy:(Math.random()-0.5)*4,life:80,
+      color:`hsl(${Math.random()*360},90%,70%)`});
+}
+setInterval(firework,900);
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles=particles.filter(p=>p.life>0);
+  particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.life--;ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,2,2);});
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
